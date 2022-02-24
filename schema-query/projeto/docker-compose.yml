@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  node:
+    image: node:17
+    container_name: "node_container"
+    volumes:
+      - .:/usr/tmp
+    working_dir: /usr/tmp
+    command: npm install
+
+  node-server:
+    build: .
+    image: "node-img"
+    container_name: "container_node"
+    volumes:
+      - .:/usr/src/app
+    working_dir: /usr/src/app
+    command: npm start --watch src /usr/src/app
+    ports:
+      - 8091:8080
+    depends_on:
+     - node
+    #restart: always
