@@ -18,6 +18,7 @@ services:
     command: npm start --watch src /usr/src/app
     ports:
       - 8091:8080
+      - 4000:4000
     depends_on:
      - node
     #restart: always
