@@ -1,5 +1,8 @@
 FROM node:17
 
+#Change here yout timezone
+#ENV TZ="America/Sao_Paulo"
+
 # Create app directory
 WORKDIR /usr/src/app
 
