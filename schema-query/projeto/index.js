@@ -21,6 +21,17 @@ const users = [
     }
 ];
 
+const profiles = [
+    {
+        id: '0001',
+        description: 'Administrator'
+    },
+    {
+        id: '0002',
+        description: 'Common'
+    }
+];
+
 const typeDefs = gql`
     scalar Date
 
@@ -40,6 +51,11 @@ const typeDefs = gql`
         discountPrice: Float!
     }
 
+    type Profile {
+        id: ID,
+        description: String
+    }
+
     #Points of entrance from API
     type Query {
         hello: String!
@@ -47,8 +63,12 @@ const typeDefs = gql`
         logedUser: User
         featuredProduct: Product!
         lotteryNumbers: [Int!]!
+        
         users: [User]
         user(id: ID): User
+
+        profiles: [Profile]
+        profile(id: ID): Profile
     }
 `
 
@@ -109,6 +129,14 @@ const resolvers = {
         },
         user(_, args) {
             const selecteds = users.
+                filter(u => u.id === args.id)
+            return selecteds ? selecteds[0] : null;
+        },
+        profiles() {
+            return profiles
+        },
+        profile(_, args) {
+            const selecteds = profiles.
                 filter(u => u.id === args.id)
             return selecteds ? selecteds[0] : null;
         }
