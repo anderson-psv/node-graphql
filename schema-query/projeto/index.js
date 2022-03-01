@@ -127,17 +127,17 @@ const resolvers = {
         users() {
             return users;
         },
-        user(_, args) {
+        user(_, { id }) {
             const selecteds = users.
-                filter(u => u.id === args.id)
+                filter(u => u.id === id)
             return selecteds ? selecteds[0] : null;
         },
         profiles() {
             return profiles
         },
-        profile(_, args) {
+        profile(_, { id }) {
             const selecteds = profiles.
-                filter(u => u.id === args.id)
+                filter(p => p.id === id)
             return selecteds ? selecteds[0] : null;
         }
     }
