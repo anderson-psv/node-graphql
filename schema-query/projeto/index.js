@@ -2,19 +2,19 @@ const {ApolloServer, gql } = require('apollo-server')
 
 const users = [
     {
-        id: 1,
+        id: '1',
         name: 'Felipe Craum',
         email: 'fcraum@email.com',
         age: 35
     },
     {
-        id: 2,
+        id: '2',
         name: 'Fernando Abraum',
         email: 'fabraum@email.com',
         age: 21
     },
     {
-        id: 3,
+        id: '3',
         name: 'Maila Fredo',
         email: 'mfredo@email.com',
         age: 26
@@ -48,6 +48,7 @@ const typeDefs = gql`
         featuredProduct: Product!
         lotteryNumbers: [Int!]!
         users: [User]
+        user(id: ID): User
     }
 `
 
@@ -105,6 +106,11 @@ const resolvers = {
         },
         users() {
             return users;
+        },
+        user(_, args) {
+            const selecteds = users.
+                filter(u => u.id === args.id)
+            return selecteds ? selecteds[0] : null;
         }
     }
 }
