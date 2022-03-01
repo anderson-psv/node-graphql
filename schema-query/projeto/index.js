@@ -25,6 +25,7 @@ const typeDefs = gql`
         timeNow: Date!
         logedUser: User
         featuredProduct: Product!
+        lotteryNumbers: [Int!]!
     }
 `
 
@@ -67,6 +68,18 @@ const resolvers = {
                 'price': 35.99,
                 'discount': 0.5,
             }
+        },
+        lotteryNumbers() {
+            const ascend = (a, b) => a - b
+            array = Array(6).fill(0);
+            array.map((value, index, array) => {
+                    //Generate unique random numbers
+                    do {
+                        random_number = parseInt(Math.random() * 60 + 1);
+                    } while(array.indexOf(random_number) !== -1)
+                    array[index] = random_number;
+                });
+            return array.sort(ascend);
         }
     }
 }
