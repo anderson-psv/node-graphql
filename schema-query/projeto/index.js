@@ -5,19 +5,22 @@ const users = [
         id: '1',
         name: 'Felipe Craum',
         email: 'fcraum@email.com',
-        age: 35
+        age: 35,
+        profile_id: '0002'
     },
     {
         id: '2',
         name: 'Fernando Abraum',
         email: 'fabraum@email.com',
-        age: 21
+        age: 21,
+        profile_id: '0001'
     },
     {
         id: '3',
         name: 'Maila Fredo',
         email: 'mfredo@email.com',
-        age: 26
+        age: 26,
+        profile_id: '0002'
     }
 ];
 
@@ -42,6 +45,7 @@ const typeDefs = gql`
         age: Int
         salary: Float
         vip: Boolean
+        profile: Profile
     }
 
     type Product {
@@ -76,6 +80,11 @@ const resolvers = {
     User: {
         salary(user) {
             return user.real_salary
+        },
+        profile(user) {
+            const selecteds = profiles.
+                filter(p => p.id === user.profile_id)
+            return selecteds ? selecteds[0] : null;
         }
     },
     Product: {
