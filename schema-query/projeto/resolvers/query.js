@@ -52,4 +52,4 @@ module.exports = {
             filter(p => p.id === id)
         return selecteds ? selecteds[0] : null;
     }
-}
+};
