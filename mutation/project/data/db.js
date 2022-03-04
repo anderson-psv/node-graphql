@@ -32,4 +32,4 @@ const users = [{
     status: 'BLOCKED'
 }]
 
-module.exports = { users, profiles }
+module.exports = { users, profiles, nextId }
