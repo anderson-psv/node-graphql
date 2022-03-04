@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  node:
+    image: node:17
+    container_name: "mutation_node_builder"
+    volumes:
+      - .:/usr/tmp
+    working_dir: /usr/tmp
+    command: npm install
+
+  node-server:
+    build: .
+    image: "node-img"
+    container_name: "mutatiton_node_server"
+    volumes:
+      - .:/usr/src/app
+    working_dir: /usr/src/app
+    command: npm start --watch src /usr/src/app
+    ports:
+      - 8092:8080
+      - 5000:4000
+    depends_on:
+     - node
+    #restart: always
