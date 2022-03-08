@@ -22,9 +22,26 @@ module.exports = {
     deleteUser(_, { id }) {
         const index = users.findIndex((u) => u.id === id);
 
+        //User not found
         if (index < 0) return null;
+
         const deleteds = users.splice(index, 1);
 
         return deleteds ? deleteds[0] : null;
+    },
+    updateUser(_, args) {
+        const index = users.findIndex((u) => u.id === args.id);
+
+        //User not found
+        if (index < 0) return null;
+
+        const user = {
+            ...users[index], //Load old data from user
+            ...args, //Overwrite data to user
+        };
+
+        //Update user
+        users.splice(index, 1, user);
+        return user;
     },
 };
