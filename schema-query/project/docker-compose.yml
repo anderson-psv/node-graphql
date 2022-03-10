@@ -1,24 +1,14 @@
 version: '3.8'
 services:
-  node:
-    image: node:17
-    container_name: "query_node_builder"
-    volumes:
-      - .:/usr/tmp
-    working_dir: /usr/tmp
-    command: npm install
-
   node-server:
+    image: node-graphql-img
     build: .
-    image: "node-img"
-    container_name: "query_node_server"
+    container_name: query_node_server
     volumes:
-      - .:/usr/src/app
-    working_dir: /usr/src/app
-    command: npm start --watch src /usr/src/app
+      - .:/graphql_node/
+      - node_modules:/graphql_node/node_modules 
+    working_dir: /graphql_node/
     ports:
-      - 8091:8080
       - 4000:4000
-    depends_on:
-     - node
-    #restart: always
+volumes:
+  node_modules: {}
