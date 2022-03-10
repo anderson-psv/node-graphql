@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --ext js,graphql --legacy-watch"
+    "start": "npx nodemon index.js --ext js,graphql --legacy-watch"
   },
   "keywords": [],
   "author": "",
