@@ -1,35 +1,54 @@
-let id = 1;
+let user_id = 1;
+let profile_id = 1;
 
-function nextId() {
-    return id++
+function nextIdUser() {
+    return user_id++;
+}
+
+function nextIdProfile() {
+    return profile_id++;
 }
 
 const profiles = [
-    { id: '0001', name: 'administrator' },
-    { id: '0002', name: 'common' }
-]
+    {
+        id: nextIdProfile(),
+        name: "administrator",
+    },
+    {
+        id: nextIdProfile(),
+        name: "common",
+    },
+    {
+        id: nextIdProfile(),
+        name: "visitor",
+    },
+];
 
-const users = [{
-    id: nextId(),
-    name: 'João Silva',
-    email: 'jsilva@zemail.com',
-    age: 29,
-    profile_id: '0001',
-    status: 'ACTIVE'
-}, {
-    id: nextId(),
-    name: 'Rafael Junior',
-    email: 'rafajun@wemail.com',
-    age: 31,
-    profile_id: '0002',
-    status: 'INACTIVE'
-}, {
-    id: nextId(),
-    name: 'Daniela Smith',
-    email: 'danismi@umail.com',
-    age: 24,
-    profile_id: '0001',
-    status: 'BLOCKED'
-}]
+const users = [
+    {
+        id: nextIdUser(),
+        name: "João Silva",
+        email: "jsilva@zemail.com",
+        age: 29,
+        profile_id: 1,
+        status: "ACTIVE",
+    },
+    {
+        id: nextIdUser(),
+        name: "Rafael Junior",
+        email: "rafajun@wemail.com",
+        age: 31,
+        profile_id: 2,
+        status: "INACTIVE",
+    },
+    {
+        id: nextIdUser(),
+        name: "Daniela Smith",
+        email: "danismi@umail.com",
+        age: 24,
+        profile_id: 3,
+        status: "BLOCKED",
+    },
+];
 
-module.exports = { users, profiles, nextId }
+module.exports = { users, profiles, nextIdUser, nextIdProfile };

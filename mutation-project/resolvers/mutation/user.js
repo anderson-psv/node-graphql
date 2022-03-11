@@ -1,4 +1,4 @@
-const { users, nextId } = require("../../data/db");
+const { users, nextIdUser } = require("../../data/db");
 
 function userIndex(filter) {
     if (!filter) return -1;
@@ -22,7 +22,7 @@ module.exports = {
         }
 
         const new_user = {
-            id: nextId,
+            id: nextIdUser,
             ...data, //Add all data as keys and values
             profile_id: "0001",
             status: "ACTIVE",

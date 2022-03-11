@@ -9,4 +9,15 @@ type Mutation {
         filter: UserFilter!
         data: UserInput!
     ): User
+
+    newProfile(
+        name: String!
+    ): Profile!
+    deleteProfile(
+        id: Int!
+    ): Profile
+    updateProfile(
+        id: Int!,
+        name: String!
+    ): Profile
 }
