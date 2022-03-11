@@ -41,15 +41,15 @@ module.exports = {
 
         return deleteds ? deleteds[0] : null;
     },
-    updateUser(_, args) {
-        const index = users.findIndex(u => u.id === args.id);
+    updateUser(_, { filter, data}) {
+        const index = userIndex(filter);
 
         //User not found
         if (index < 0) return null;
 
         const user = {
             ...users[index], //Load old data from user
-            ...args, //Overwrite data to user
+            ...data, //Overwrite data to user
         };
 
         //Update user
