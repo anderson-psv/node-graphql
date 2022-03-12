@@ -13,7 +13,7 @@ function userIndex(filter) {
 }
 
 module.exports = {
-    newUser(_, data) {
+    newUser(_, { data }) {
         //Check if the email has already been registered
         const existingEmail = users.some(u => u.email === data.email);
 
@@ -41,7 +41,7 @@ module.exports = {
 
         return deleteds ? deleteds[0] : null;
     },
-    updateUser(_, { filter, data}) {
+    updateUser(_, { filter, data }) {
         const index = userIndex(filter);
 
         //User not found
