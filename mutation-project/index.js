@@ -9,5 +9,6 @@ const server = new ApolloServer({
 })
 
 server.listen().then(({ url }) => {
-    console.log(`Executing in ${url}`)
+    //console.log(`Executing in ${url}`)
+    console.log(`Executing in http://localhost:4001`)
 })
