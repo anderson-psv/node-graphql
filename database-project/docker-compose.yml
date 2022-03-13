@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  # node-server:
+  #   image: node-graphql-img
+  #   build: .
+  #   container_name: db_example_node_server
+  #   volumes:
+  #     - ./src:/graphql_node/
+  #     - ./src/node_modules_db:/graphql_node/node_modules 
+  #   working_dir: /graphql_node/
+  #   ports:
+  #     - 4002:4000
+
+  mysql-db:
+    image: mysql:8.0
+    container_name: graphql_mysql_db
+    volumes:
+      - ./docker/database-dir:/var/lib/mysql 
+      - ./docker/scripts:/docker-entrypoint-initdb.d
+    ports:
+      - 3359:3306
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+
+  phpmyadmin:
+   image: phpmyadmin/phpmyadmin
+   container_name: phpmyadmin-server
+   ports:
+     - 8084:80
+   environment:
+     PMA_HOST: mysql-db
+   depends_on:
+     - mysql-db
+  
+volumes:
+  node_modules_db: {}

@@ -1,0 +1,16 @@
+{
+    "name": "db-project",
+    "version": "1.0.0",
+    "description": "teste",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no teste specified\""
+    },
+    "keywords": [],
+    "author": "",
+    "licence": "ISC",
+    "dependencies": {
+        "knex": "^1.0.3",
+        "mysql": "^2.18.1"
+    }
+}
