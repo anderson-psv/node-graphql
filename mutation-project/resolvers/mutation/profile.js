@@ -10,7 +10,7 @@ module.exports = {
         }
 
         const new_profile = {
-            id: nextIdProfile,
+            id: nextIdProfile(),
             name,
         };
 
