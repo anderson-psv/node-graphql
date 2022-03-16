@@ -22,9 +22,9 @@ module.exports = {
         }
 
         const new_user = {
-            id: nextIdUser,
+            id: nextIdUser(),
             ...data, //Add all data as keys and values
-            profile_id: "0001",
+            profile_id: 1,
             status: "ACTIVE",
         };
 
