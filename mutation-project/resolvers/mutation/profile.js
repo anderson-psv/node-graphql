@@ -28,7 +28,6 @@ module.exports = {
         return deleteds ? deleteds[0] : null;
     },
     updateProfile(_, { id, name }) {
-        console.log(profiles);
         const index = profiles.findIndex(p => p.id === id);
 
         //Profile not found
